@@ -1,0 +1,23 @@
+{
+  "name": "ixframework",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "start:dev": "cross-env NODE_ENV=development node ./dist/index.js",
+    "start:prod": "cross-env NODE_ENV=production node ./dist/index.js",
+    "dev": "npm run build && npm run start:dev"
+  },
+  "author": "bctix",
+  "license": "ISC",
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.2"
+  },
+  "dependencies": {
+    "discord.js": "^14.18.0",
+    "dotenv": "^16.4.7"
+  }
+}
