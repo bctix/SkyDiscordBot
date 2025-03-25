@@ -17,7 +17,9 @@
     "typescript": "^5.8.2"
   },
   "dependencies": {
+    "@types/luxon": "^3.4.2",
     "discord.js": "^14.18.0",
-    "dotenv": "^16.4.7"
+    "dotenv": "^16.4.7",
+    "luxon": "^3.5.0"
   }
 }

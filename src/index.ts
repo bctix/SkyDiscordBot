@@ -2,6 +2,8 @@ import { Client, Collection, GatewayIntentBits } from "discord.js";
 import { CustomClient } from "./types/bot_classes";
 import dotenv from "dotenv";
 import { registerEvents, registerTextCommands } from "./utils/registry";
+import { DateTime } from "luxon";
+import { getShardInfo } from "./data/shard";
 dotenv.config();
 
 const client = new CustomClient(
