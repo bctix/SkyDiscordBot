@@ -2,9 +2,7 @@
 import fs from "fs";
 import path from "path";
 import { ChatCommand, ContextCommand, CustomClient } from "../types/bot_classes";
-import { fileURLToPath, pathToFileURL } from "url";
 import { APIApplicationCommandOptionChoice, ApplicationCommandOptionType, ContextMenuCommandBuilder, REST, Routes, SlashCommandBuilder } from "discord.js";
-import { URL } from "url";
 
 export async function registerTextCommands(client: CustomClient, ...dirs: string[]) {
     dirs.forEach(async (dir) => {

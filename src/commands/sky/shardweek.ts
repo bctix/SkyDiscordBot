@@ -1,4 +1,4 @@
-import { ChatInputCommandInteraction, Colors, EmbedBuilder, ShardingManager } from 'discord.js';
+import { EmbedBuilder } from 'discord.js';
 import { ChatCommand, ChatCommandOptions, ChatCommandExecute } from '../../types/bot_classes';
 import { getShardInfo, ShardInfo } from '../../data/shard';
 import { DateTime, Duration } from 'luxon';

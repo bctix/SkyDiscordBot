@@ -1,4 +1,3 @@
-import { ChatInputCommandInteraction } from 'discord.js';
 import { ChatCommand, ChatCommandOptions, ChatCommandExecute } from '../../types/bot_classes';
 
 const textcommand: ChatCommand = new ChatCommand(
