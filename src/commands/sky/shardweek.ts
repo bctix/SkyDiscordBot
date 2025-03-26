@@ -1,7 +1,10 @@
-import { EmbedBuilder } from 'discord.js';
+import { EmbedBuilder, InteractionContextType } from 'discord.js';
 import { ChatCommand, ChatCommandOptions, ChatCommandExecute } from '../../types/bot_classes';
 import { getShardInfo, ShardInfo } from '../../data/shard';
 import { DateTime, Duration } from 'luxon';
+import Translation from "../../lang/en.json"
+
+const realms = Translation["skyRealms"];
 
 const textcommand: ChatCommand = new ChatCommand(
     {
@@ -9,6 +12,7 @@ const textcommand: ChatCommand = new ChatCommand(
         description: "Forecast for the week",
         aliases: ["sw"],
         usage: "Tells you about shard for the next seven days",
+        contexts: [InteractionContextType.BotDM, InteractionContextType.Guild, InteractionContextType.PrivateChannel],
         async execute(execute: ChatCommandExecute) {
             const shardInfoWeek: ShardInfo[] = [];
 
@@ -24,8 +28,8 @@ const textcommand: ChatCommand = new ChatCommand(
             embed.setTitle("Shard forecast");
             shardInfoWeek.forEach(shardInfo => {
                 embed.addFields(
-                    {name: shardInfo.date.toLocaleString({weekday: "long"}), 
-                    value: shardInfo.hasShard ? shardInfo.isRed ? "Red" : "Black" : "None"}
+                    {name: `> **${shardInfo.date.toLocaleString({weekday: "long"})}** (${shardInfo.date.toLocaleString(DateTime.DATE_SHORT)})`, 
+                    value: `\`${realms[`${shardInfo.realm}.short`]}\`,\n${shardInfo.hasShard ? shardInfo.isRed ? "Red shard" : "Black shard" : "None"}`}
                 )
             });
             embed.setColor([229, 222, 207]);
