@@ -40,10 +40,17 @@ const textcommand: ChatCommand = new ChatCommand(
             const embed = new EmbedBuilder();
             embed.setTitle(`There is a ${shardInfo.isRed ? "Red" : "Black"} shard today!`);
             embed.setColor(shardInfo.isRed ? Colors.Red : Colors.DarkGrey);
+
+            const imgUrl = shardInfo.numVarient > 1 && (shardInfo.numVarient - 1|| shardInfo.numVarient - 1 === 0)
+            ? `https://raw.githubusercontent.com/PlutoyDev/sky-shards/e59ed5a864c47cf5ef40436fd565b662509fb81c/public/infographics/map_varient_clement/${shardInfo.map}.${shardInfo.numVarient - 1}.webp`
+            : `https://raw.githubusercontent.com/PlutoyDev/sky-shards/e59ed5a864c47cf5ef40436fd565b662509fb81c/public/infographics/map_clement/${shardInfo.map}.webp`
+
+            embed.setImage(imgUrl);
+            
             for (let idx = 0; idx < shardInfo.occurrences.length; idx++) {
                 const occurrence = shardInfo.occurrences[idx];
                 embed.addFields(
-                    {name: `Shard #${idx+1}`, value: `${time(occurrence.start.toJSDate())} - ${occurrence.end.toJSDate()}`},
+                    {name: `Shard #${idx+1}`, value: `${time(occurrence.land.toJSDate(), TimestampStyles.RelativeTime)} - ${time(occurrence.end.toJSDate(), TimestampStyles.RelativeTime)}`},
                 );
             }
 
