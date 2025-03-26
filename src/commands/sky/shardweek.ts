@@ -1,7 +1,7 @@
 import { ChatInputCommandInteraction, Colors, EmbedBuilder, ShardingManager } from 'discord.js';
 import { ChatCommand, ChatCommandOptions, ChatCommandExecute } from '../../types/bot_classes';
 import { getShardInfo, ShardInfo } from '../../data/shard';
-import { DateTime } from 'luxon';
+import { DateTime, Duration } from 'luxon';
 
 const textcommand: ChatCommand = new ChatCommand(
     {
@@ -14,12 +14,9 @@ const textcommand: ChatCommand = new ChatCommand(
 
             for (let idx = 0; idx < 7; idx++) {
                 const today = DateTime.now();
-                let day = today.day;
-                const newDay = DateTime.fromObject({year: today.year, month: today.month, day: day += idx, hour: today.hour, minute: today.minute},
-                    {zone: today.zone}
-                );
-
-                const info = getShardInfo(newDay);
+                let offset = Duration.fromObject({day: idx});
+                const newday = today.plus(offset);
+                const info = getShardInfo(newday);
                 shardInfoWeek.push(info);
             }
 
