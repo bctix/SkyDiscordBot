@@ -40,7 +40,7 @@ const textcommand: ChatCommand = new ChatCommand(
             }
 
             const embed = new EmbedBuilder();
-            embed.setTitle(`There is a ${shardInfo.isRed ? "Red" : "Black"} shard today!`);
+            embed.setTitle(`There is a ${shardInfo.isRed ? "Red" : "Black"} Shard today!`);
             embed.setColor(shardInfo.isRed ? Colors.Red : Colors.DarkGrey);
 
             const imgUrl = shardInfo.numVarient > 1 && (shardInfo.numVarient - 1|| shardInfo.numVarient - 1 === 0)
@@ -50,8 +50,8 @@ const textcommand: ChatCommand = new ChatCommand(
             embed.setImage(imgUrl);
 
             embed.addFields(
-                {name: "Where?", value: `in ${Relams[`${shardInfo.realm}.long`]} at the ${Maps[shardInfo.map]}`},
-                {name: "Reward", value: `${shardInfo.isRed ? `${shardInfo.rewardAC} Red candles` : "4 cakes of wax"}`}
+                {name: "Where?", value: `in \`${Relams[`${shardInfo.realm}.long`]}\` at the \`${Maps[shardInfo.map]}\``},
+                {name: "Reward", value: `${shardInfo.isRed ? `\`${shardInfo.rewardAC}\` Red candles` : `\`4 cakes of wax\``}`}
             )
             
             for (let idx = 0; idx < shardInfo.occurrences.length; idx++) {
