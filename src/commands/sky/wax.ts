@@ -43,6 +43,12 @@ const textcommand: ChatCommand = new ChatCommand(
                 );
             })
 
+            const resetTime = getEventTime(eventDefinitions[eventNames.DAILY_RESET], now);
+
+            embed.addFields(
+                { name: "Daily Reset", value: time(resetTime.toJSDate(), TimestampStyles.RelativeTime)},
+            );
+
             execute.data.reply({embeds: [embed]});
         },
     } as ChatCommandOptions
