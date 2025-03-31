@@ -12,7 +12,7 @@ const textcommand: ChatCommand = new ChatCommand(
         name: "shard",
         description: "Free stuff!!!!",
         aliases: ["s"],
-        usage: "Tells you all about the shard today (if there is one today)",
+        usage: "Tells you all about the shard today (if there is one today). If offset is provided, it offsets the day shown.",
         contexts: [InteractionContextType.BotDM, InteractionContextType.Guild, InteractionContextType.PrivateChannel],
         options: [
             {
