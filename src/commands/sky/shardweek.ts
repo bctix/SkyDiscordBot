@@ -27,9 +27,13 @@ const textcommand: ChatCommand = new ChatCommand(
             const embed = new EmbedBuilder();
             embed.setTitle("Shard forecast");
             shardInfoWeek.forEach(shardInfo => {
+                const nameStr = 
+                `> ${shardInfo.hasShard ? `` : `~~`}**${shardInfo.date.toLocaleString({weekday: "long"})}** (${shardInfo.date.toLocaleString(DateTime.DATE_SHORT)}) ${shardInfo.hasShard ? `` : `~~`}`
+                const valueStr =
+                `${shardInfo.hasShard ? `` : `~~`}\`${realms[`${shardInfo.realm}.short`]}\`${shardInfo.hasShard ? `` : `~~`},\n${shardInfo.hasShard ? shardInfo.isRed ? "Red shard" : "Black shard" : "~~None~~"}`
                 embed.addFields(
-                    {name: `> **${shardInfo.date.toLocaleString({weekday: "long"})}** (${shardInfo.date.toLocaleString(DateTime.DATE_SHORT)})`, 
-                    value: `\`${realms[`${shardInfo.realm}.short`]}\`,\n${shardInfo.hasShard ? shardInfo.isRed ? "Red shard" : "Black shard" : "None"}`}
+                    {name: nameStr, 
+                    value: valueStr}
                 )
             });
             embed.setColor([229, 222, 207]);
