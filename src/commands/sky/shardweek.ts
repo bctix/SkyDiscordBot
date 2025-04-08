@@ -16,16 +16,23 @@ const textcommand: ChatCommand = new ChatCommand(
         async execute(execute: ChatCommandExecute) {
             const shardInfoWeek: ShardInfo[] = [];
 
-            for (let idx = 0; idx < 7; idx++) {
+            var noShardDays = 0;
+            for (let idx = 0; idx < 7 + noShardDays; idx++) {
                 const today = DateTime.now();
-                let offset = Duration.fromObject({day: idx});
+                let offset = Duration.fromObject({day: idx + noShardDays});
                 const newday = today.plus(offset);
                 const info = getShardInfo(newday);
+                if(!info.hasShard)
+                {
+                    noShardDays++
+                    continue;
+                }
                 shardInfoWeek.push(info);
             }
 
             const embed = new EmbedBuilder();
             embed.setTitle("Shard forecast");
+            embed.setDescription("Showing the next 7 days with a shard!");
             shardInfoWeek.forEach(shardInfo => {
                 const nameStr = 
                 `> ${shardInfo.hasShard ? `` : `~~`}**${shardInfo.date.toLocaleString({weekday: "long"})}** (${shardInfo.date.toLocaleString(DateTime.DATE_SHORT)}) ${shardInfo.hasShard ? `` : `~~`}`
