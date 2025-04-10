@@ -1,5 +1,3 @@
-//https://web-scraping.dev/product/1
-
 import { EmbedBuilder, hyperlink } from '@discordjs/builders';
 import { ChatCommand, ChatCommandOptions, ChatCommandExecute } from '../../types/bot_classes';
 import axios from "axios";
